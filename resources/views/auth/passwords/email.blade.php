@@ -5,6 +5,11 @@
         <div class="card-group">
             <div class="card p-4">
                 <div class="card-body">
+                    @if(\Session::has('status'))
+                        <p class="alert alert-info">
+                            {{ \Session::get('status') }}
+                        </p>
+                    @endif
                     <form method="POST" action="{{ route('password.email') }}">
                         {{ csrf_field() }}
                         <h1>
@@ -18,7 +23,7 @@
                         <div>
                             {{ csrf_field() }}
                             <div class="form-group has-feedback">
-                                <input type="email" name="email" class="form-control" required="required"="autofocus" placeholder="{{ trans('global.login_email') }}">
+                                <input type="email" name="email" class="form-control @if($errors->has('email')) is-invalid @endif" required="required"="autofocus" placeholder="{{ trans('global.login_email') }}">
                                 @if($errors->has('email'))
                                     <em class="invalid-feedback">
                                         {{ $errors->first('email') }}

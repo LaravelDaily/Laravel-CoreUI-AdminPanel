@@ -18,7 +18,7 @@
                         <div>
                             <input name="token" value="{{ $token }}" type="hidden">
                             <div class="form-group has-feedback">
-                                <input type="email" name="email" class="form-control" required="required" placeholder="{{ trans('global.login_email') }}">
+                                <input type="email" name="email" class="form-control @if($errors->has('email')) is-invalid @endif" required="required" placeholder="{{ trans('global.login_email') }}">
                                 @if($errors->has('email'))
                                     <em class="invalid-feedback">
                                         {{ $errors->first('email') }}
@@ -26,7 +26,7 @@
                                 @endif
                             </div>
                             <div class="form-group has-feedback">
-                                <input type="password" name="password" class="form-control" required="required" placeholder="{{ trans('global.login_password') }}">
+                                <input type="password" name="password" class="form-control @if($errors->has('password')) is-invalid @endif" required="required" placeholder="{{ trans('global.login_password') }}">
                                 @if($errors->has('password'))
                                     <em class="invalid-feedback">
                                         {{ $errors->first('password') }}
@@ -34,7 +34,7 @@
                                 @endif
                             </div>
                             <div class="form-group has-feedback">
-                                <input type="password" name="password_confirmation" class="form-control" required="required" placeholder="{{ trans('global.login_password_confirmation') }}">
+                                <input type="password" name="password_confirmation" class="form-control @if($errors->has('password_confirmation')) is-invalid @endif" required="required" placeholder="{{ trans('global.login_password_confirmation') }}">
                                 @if($errors->has('password_confirmation'))
                                     <em class="invalid-feedback">
                                         {{ $errors->first('password_confirmation') }}
